@@ -27,6 +27,16 @@ A statistical framework to validate if the VaR model's actual failure rate match
 * `yfinance` - Historical market data ingestion
 * `scipy` - Normal distribution CDFs and Chi-Squared testing for Kupiec validation
 
+## Execution
+```python
+from risk_engine import PortfolioRiskEngine
+
+engine = PortfolioRiskEngine(
+    tickers=['AAPL', 'MSFT', 'GLD', 'TLT'],
+    weights=[0.25, 0.25, 0.25, 0.25],
+    portfolio_val=1_000_000
+)
+
 print(engine.calculate_parametric_var(horizon_days=10))
 print(engine.calculate_historical_var(horizon_days=10))
 print(engine.run_kupiec_backtest())
